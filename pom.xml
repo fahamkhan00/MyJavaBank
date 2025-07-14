@@ -74,11 +74,13 @@
 		    <artifactId>itextpdf</artifactId>
 		    <version>5.5.13.3</version>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>com.failure_txn</groupId>
 			<artifactId>failure_txn</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		-->
 	</dependencies>
 
 	<build>
