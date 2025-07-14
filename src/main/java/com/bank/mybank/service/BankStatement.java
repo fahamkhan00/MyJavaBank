@@ -1,6 +1,5 @@
 package com.bank.mybank.service;
 
-import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -30,7 +29,7 @@ public class BankStatement {
 	
 	private static final String FILE="//home//faham//Documents/statement.pdf";
 	
-	public List<Transaction> generateStatement(String accountNumber, String startDate, String endDate) throws FileNotFoundException{
+	public List<Transaction> generateStatement(String accountNumber, String startDate, String endDate){
 		
 		LocalDate start =LocalDate.parse(startDate, DateTimeFormatter.ISO_DATE);
 		
