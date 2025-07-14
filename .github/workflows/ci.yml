@@ -25,3 +25,7 @@ jobs:
 
     - name: Run tests
       run: ./mvnw test
+      
+    - name: Run tests with full stacktrace
+      run: mvn test -e
+
