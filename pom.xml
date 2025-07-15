@@ -114,11 +114,7 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>com.failure_txn</groupId>
-			<artifactId>failure_txn</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+>
 	</dependencies>
 
 	<build>
