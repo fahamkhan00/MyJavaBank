@@ -8,10 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.bank.mybank.entity.Transaction;
 import com.bank.mybank.repository.TransactionRepository;
-import com.itextpdf.awt.geom.Rectangle;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.codec.Base64.OutputStream;
+
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

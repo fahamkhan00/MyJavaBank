@@ -11,7 +11,7 @@ import com.bank.mybank.dto.EmailDetails;
 import org.springframework.beans.factory.annotation.Value;
 //import lombok.Value;
 
-@Service
+@Service  
 public class EmailServiceImplementation implements EmailService {
 	
 	@Autowired
