@@ -2,25 +2,37 @@ package com.bank.mybank.service;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bank.mybank.config.JwtTokenProvider;
 import com.bank.mybank.dto.AccountInfo;
 import com.bank.mybank.dto.BankResponse;
 import com.bank.mybank.dto.CreditDebitRequest;
 import com.bank.mybank.dto.EmailDetails;
 import com.bank.mybank.dto.EnquiryRequest;
+import com.bank.mybank.dto.LoginDto;
 import com.bank.mybank.dto.TransactionDto;
 import com.bank.mybank.dto.TransferRequest;
 import com.bank.mybank.dto.UserRequest;
+import com.bank.mybank.entity.Role;
 import com.bank.mybank.entity.User;
 import com.bank.mybank.repository.UserRepository;
 import com.bank.mybank.utils.AccountUtils;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImplementation implements UserService {
 	
 	@Autowired
@@ -31,7 +43,17 @@ public class UserServiceImplementation implements UserService {
 	
 	@Autowired
 	TransactionService transactionService;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	JwtTokenProvider jwtTokenProvider;
 
+	
 	@Override
 	public BankResponse createAccount(UserRequest userRequest) {
 		// Creating a New Account--saving new User into db
@@ -58,9 +80,11 @@ public class UserServiceImplementation implements UserService {
 				.accountBalance(BigDecimal.ZERO)
 				
 				.email(userRequest.getEmail())
+				.password(passwordEncoder.encode( userRequest.getPassword()))
 				.phoneNumber(userRequest.getPhoneNumber())
 				.alternativePhoneNumber(userRequest.getAlternativePhoneNumber())
 				.Status("Active")
+				.role(Role.valueOf("ROLE_ADMIN"))
 				
 				
 				
@@ -89,6 +113,34 @@ public class UserServiceImplementation implements UserService {
 						.build())
 				.build();
 	}
+	
+	@Override
+	public BankResponse login(LoginDto loginDto) {
+		Authentication authentication=null;
+		authentication=authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword())
+				);
+		
+		
+		EmailDetails loginAlert=EmailDetails.builder()
+				.recipient(loginDto.getEmail())
+				.subject("You're Logged in!")
+				.messageBody("You're logged in into your account. If you did not initiate this request please "
+						+ "contact your bank")
+				.build();
+		emailService.sendEmailAlert(loginAlert);
+		
+		return BankResponse.builder()
+				.responseCode("Login Success")
+				.responseMessage(jwtTokenProvider.generateToken(authentication))
+				.accountInfo(null)
+				.build();
+	}
+	
+	
+	
+	
+	
 
 	@Override
 	public BankResponse balanceEnquiry(EnquiryRequest request) {
@@ -317,6 +369,12 @@ public class UserServiceImplementation implements UserService {
 
 
 	}
+
+
+
+
+
+	
 
 		
 

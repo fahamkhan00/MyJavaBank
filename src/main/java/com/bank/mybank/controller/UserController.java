@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bank.mybank.dto.BankResponse;
 import com.bank.mybank.dto.CreditDebitRequest;
 import com.bank.mybank.dto.EnquiryRequest;
+import com.bank.mybank.dto.LoginDto;
 import com.bank.mybank.dto.TransferRequest;
 import com.bank.mybank.dto.UserRequest;
 import com.bank.mybank.service.UserService;
@@ -36,8 +37,17 @@ public class UserController {
 			)
 	@PostMapping()
 	public BankResponse createAccount(@RequestBody UserRequest userRequest) {
+	    System.out.println("/api/user endpoint hit");
 		return userService.createAccount(userRequest);
 	}
+	
+	
+	@PostMapping("/login")
+	public BankResponse login(@RequestBody LoginDto loginDto) {
+		return userService.login(loginDto);
+		
+	}
+	
 	
 	@Operation(
 			summary="Check Balance",
