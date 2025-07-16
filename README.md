@@ -1,4 +1,4 @@
- MyBank - Spring Boot JWT Authentication API
+🏦 MyBank - Spring Boot JWT Authentication API
 
 A secure banking backend application built with Spring Boot, JWT authentication, MySQL, and Docker. This project implements user registration, login, role-based access control, and secure API endpoints.
 
