@@ -67,15 +67,26 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 ```
 
 🔐 API Endpoints
+
 Method	Endpoint	Access	Description
+
 POST	/api/user	Public	Register a new user
+
 POST	/api/user/login	Public	Authenticate and get JWT
+
 POST	/api/user/credit	Credit to selected User
+
 POST	/api/user/Debit	Debit to selected User
+
 POST	/api/user/transfer	Transfer Amount to any user
+
 GET	/bankStatement	Get user transactions Statement
+
 GET	/api/user/balanceEnquiry	Check account balance
+
 GET	/api/user/nameEnquiry	Check Account Holder name
+
+
 <img width="1920" height="1048" alt="createUser" src="https://github.com/user-attachments/assets/eed39d78-13d0-4ff7-8e84-3833665882b0" />
 <img width="1920" height="1048" alt="credit" src="https://github.com/user-attachments/assets/0f94e9b7-7405-46a1-8a43-adab4e98ff41" />
 <img width="1920" height="1048" alt="login" src="https://github.com/user-attachments/assets/d6525feb-a134-4fd7-abb9-28a203ccca5a" />
