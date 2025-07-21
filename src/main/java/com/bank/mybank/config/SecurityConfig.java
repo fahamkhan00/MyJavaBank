@@ -59,6 +59,7 @@ public class SecurityConfig {
 		.authorizeHttpRequests(authorize ->
 		authorize.requestMatchers(HttpMethod.POST, "/api/user").permitAll()
 		.requestMatchers(HttpMethod.POST, "/api/user/login").permitAll()
+		.requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**","index.html").permitAll()
 		.anyRequest().authenticated());
 		httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		httpSecurity.authenticationProvider(authenticationProvider());
