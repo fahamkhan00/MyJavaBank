@@ -82,5 +82,6 @@ jobs:
             -e DB_HOST=${{secrets.DB_HOST}} \
             -e DB_USER=${{secrets.DB_USER}} \
             -e DB_PASS=${{secrets.DB_PASS}} \
-            -e JWT_SECRET=${{secrets.JWT_SECRET}} \
+            -e MAIL_USER=${{secrets.MAIL_USER}} \
+            -e MAIL_PASS=${{secrets.MAIL_PASS}} \
             ${{ secrets.DOCKER_IMAGE }}
