@@ -44,27 +44,13 @@ src
 
 Make sure to update the values in `application.properties`:
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/mybankdb
-spring.datasource.username=your_db_username
-spring.datasource.password=your_db_password
+## 📖 API Documentation
 
-app.jwt-secret=your_jwt_secret
-app.jwt-expiration=604800000  # 7 days in milliseconds
+- 📘 **Postman Collection**: [Download Collection](postman/mybank.postman_collection.json)  
+- 📚 **Swagger UI**: [Documentation](http://3.111.102.145:8083/swagger-ui/index.html#/)
 
-pring.mail.host=smtp.gmail.com
+> Make sure your EC2 instance allows port `8080` in the security group, and Swagger is enabled in your Spring Boot app.
 
-spring.mail.port= 587
-
-spring.mail.username=your_mail
-
-spring.mail.password=app_pass
-
-
-spring.mail.properties.mail.smtp.auth=true
-
-spring.mail.properties.mail.smtp.starttls.enable=true
-```
 
 🔐 API Endpoints
 
